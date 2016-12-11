@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Math;
 
 namespace TravellingSalesmanDemo
 {
@@ -26,18 +27,18 @@ namespace TravellingSalesmanDemo
             var dLat = DegreesToRadians(latitude - Latitude);
             var dLon = DegreesToRadians(longitude - Longitude);
             var a =
-                System.Math.Sin(dLat / 2) * System.Math.Sin(dLat / 2) +
-                System.Math.Cos(DegreesToRadians(Latitude)) * System.Math.Cos(DegreesToRadians(latitude)) *
-                System.Math.Sin(dLon / 2) * System.Math.Sin(dLon / 2)
+                Sin(dLat / 2) * Sin(dLat / 2) +
+                Cos(DegreesToRadians(Latitude)) * Cos(DegreesToRadians(latitude)) *
+                Sin(dLon / 2) * Sin(dLon / 2)
                 ;
-            var c = 2 * System.Math.Atan2(System.Math.Sqrt(a), System.Math.Sqrt(1 - a));
+            var c = 2 * Atan2(Sqrt(a), Sqrt(1 - a));
             var d = R * c; // distance in km
             return d;
         }
 
         private static double DegreesToRadians(double deg)
         {
-            return deg * (System.Math.PI / 180);
+            return deg * (PI / 180);
         }
 
         public byte[] ToBinaryString()
